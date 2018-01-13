@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.WeChatOfficialAccountMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.WeChatOfficialAccount">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, role_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    insert into t_user_role (id, user_id, role_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    insert into t_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update t_user_role
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update t_user_role
+    set user_id = #{userId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.model.WeChatOfficialAccount">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, role_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    insert into t_role (id, role_name)
+    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update t_role
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update t_role
+    set role_name = #{roleName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.model.WeChatOfficialAccount">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="wx_name" jdbcType="VARCHAR" property="wxName" />
+    <result column="aes_key" jdbcType="VARCHAR" property="aesKey" />
+    <result column="encode" jdbcType="BIT" property="encode" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="app_secret" jdbcType="VARCHAR" property="appSecret" />
+    <result column="wxid" jdbcType="VARCHAR" property="wxid" />
+    <result column="weixin" jdbcType="CHAR" property="weixin" />
+    <result column="header_pic" jdbcType="CHAR" property="headerPic" />
+    <result column="token" jdbcType="CHAR" property="token" />
+    <result column="w_token" jdbcType="VARCHAR" property="wToken" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modiy_time" jdbcType="TIMESTAMP" property="modiyTime" />
+    <result column="tplcontentid" jdbcType="VARCHAR" property="tplcontentid" />
+    <result column="share_ticket" jdbcType="VARCHAR" property="shareTicket" />
+    <result column="share_dated" jdbcType="CHAR" property="shareDated" />
+    <result column="authorizer_access_token" jdbcType="VARCHAR" property="authorizerAccessToken" />
+    <result column="authorizer_refresh_token" jdbcType="VARCHAR" property="authorizerRefreshToken" />
+    <result column="authorizer_expires" jdbcType="CHAR" property="authorizerExpires" />
+    <result column="type" jdbcType="BIT" property="type" />
+    <result column="web_access_token" jdbcType="VARCHAR" property="webAccessToken" />
+    <result column="web_refresh_token" jdbcType="VARCHAR" property="webRefreshToken" />
+    <result column="web_expires" jdbcType="TIMESTAMP" property="webExpires" />
+    <result column="qr" jdbcType="VARCHAR" property="qr" />
+    <result column="wait_access" jdbcType="BIT" property="waitAccess" />
+    <result column="submerno" jdbcType="VARCHAR" property="submerno" />
+    <result column="apikey" jdbcType="VARCHAR" property="apikey" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.demo.model.WeChatOfficialAccount">
+    <result column="menu_config" jdbcType="LONGVARCHAR" property="menuConfig" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, wx_name, aes_key, encode, app_id, app_secret, wxid, weixin, header_pic, 
+    token, w_token, create_time, modiy_time, tplcontentid, share_ticket, share_dated, 
+    authorizer_access_token, authorizer_refresh_token, authorizer_expires, type, web_access_token, 
+    web_refresh_token, web_expires, qr, wait_access, submerno, apikey
+  </sql>
+  <sql id="Blob_Column_List">
+    menu_config
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from qzy_wx_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from qzy_wx_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    insert into qzy_wx_user (id, uid, wx_name, 
+      aes_key, encode, app_id, 
+      app_secret, wxid, weixin, 
+      header_pic, token, w_token, 
+      create_time, modiy_time, tplcontentid, 
+      share_ticket, share_dated, authorizer_access_token, 
+      authorizer_refresh_token, authorizer_expires, 
+      type, web_access_token, web_refresh_token, 
+      web_expires, qr, wait_access, 
+      submerno, apikey, menu_config
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{wxName,jdbcType=VARCHAR}, 
+      #{aesKey,jdbcType=VARCHAR}, #{encode,jdbcType=BIT}, #{appId,jdbcType=VARCHAR}, 
+      #{appSecret,jdbcType=VARCHAR}, #{wxid,jdbcType=VARCHAR}, #{weixin,jdbcType=CHAR}, 
+      #{headerPic,jdbcType=CHAR}, #{token,jdbcType=CHAR}, #{wToken,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modiyTime,jdbcType=TIMESTAMP}, #{tplcontentid,jdbcType=VARCHAR}, 
+      #{shareTicket,jdbcType=VARCHAR}, #{shareDated,jdbcType=CHAR}, #{authorizerAccessToken,jdbcType=VARCHAR}, 
+      #{authorizerRefreshToken,jdbcType=VARCHAR}, #{authorizerExpires,jdbcType=CHAR}, 
+      #{type,jdbcType=BIT}, #{webAccessToken,jdbcType=VARCHAR}, #{webRefreshToken,jdbcType=VARCHAR}, 
+      #{webExpires,jdbcType=TIMESTAMP}, #{qr,jdbcType=VARCHAR}, #{waitAccess,jdbcType=BIT}, 
+      #{submerno,jdbcType=VARCHAR}, #{apikey,jdbcType=VARCHAR}, #{menuConfig,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    insert into qzy_wx_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="wxName != null">
+        wx_name,
+      </if>
+      <if test="aesKey != null">
+        aes_key,
+      </if>
+      <if test="encode != null">
+        encode,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="appSecret != null">
+        app_secret,
+      </if>
+      <if test="wxid != null">
+        wxid,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="headerPic != null">
+        header_pic,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="wToken != null">
+        w_token,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modiyTime != null">
+        modiy_time,
+      </if>
+      <if test="tplcontentid != null">
+        tplcontentid,
+      </if>
+      <if test="shareTicket != null">
+        share_ticket,
+      </if>
+      <if test="shareDated != null">
+        share_dated,
+      </if>
+      <if test="authorizerAccessToken != null">
+        authorizer_access_token,
+      </if>
+      <if test="authorizerRefreshToken != null">
+        authorizer_refresh_token,
+      </if>
+      <if test="authorizerExpires != null">
+        authorizer_expires,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="webAccessToken != null">
+        web_access_token,
+      </if>
+      <if test="webRefreshToken != null">
+        web_refresh_token,
+      </if>
+      <if test="webExpires != null">
+        web_expires,
+      </if>
+      <if test="qr != null">
+        qr,
+      </if>
+      <if test="waitAccess != null">
+        wait_access,
+      </if>
+      <if test="submerno != null">
+        submerno,
+      </if>
+      <if test="apikey != null">
+        apikey,
+      </if>
+      <if test="menuConfig != null">
+        menu_config,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="wxName != null">
+        #{wxName,jdbcType=VARCHAR},
+      </if>
+      <if test="aesKey != null">
+        #{aesKey,jdbcType=VARCHAR},
+      </if>
+      <if test="encode != null">
+        #{encode,jdbcType=BIT},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxid != null">
+        #{wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=CHAR},
+      </if>
+      <if test="headerPic != null">
+        #{headerPic,jdbcType=CHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=CHAR},
+      </if>
+      <if test="wToken != null">
+        #{wToken,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiyTime != null">
+        #{modiyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tplcontentid != null">
+        #{tplcontentid,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTicket != null">
+        #{shareTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="shareDated != null">
+        #{shareDated,jdbcType=CHAR},
+      </if>
+      <if test="authorizerAccessToken != null">
+        #{authorizerAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerRefreshToken != null">
+        #{authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerExpires != null">
+        #{authorizerExpires,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="webAccessToken != null">
+        #{webAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webRefreshToken != null">
+        #{webRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webExpires != null">
+        #{webExpires,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qr != null">
+        #{qr,jdbcType=VARCHAR},
+      </if>
+      <if test="waitAccess != null">
+        #{waitAccess,jdbcType=BIT},
+      </if>
+      <if test="submerno != null">
+        #{submerno,jdbcType=VARCHAR},
+      </if>
+      <if test="apikey != null">
+        #{apikey,jdbcType=VARCHAR},
+      </if>
+      <if test="menuConfig != null">
+        #{menuConfig,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update qzy_wx_user
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="wxName != null">
+        wx_name = #{wxName,jdbcType=VARCHAR},
+      </if>
+      <if test="aesKey != null">
+        aes_key = #{aesKey,jdbcType=VARCHAR},
+      </if>
+      <if test="encode != null">
+        encode = #{encode,jdbcType=BIT},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appSecret != null">
+        app_secret = #{appSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxid != null">
+        wxid = #{wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=CHAR},
+      </if>
+      <if test="headerPic != null">
+        header_pic = #{headerPic,jdbcType=CHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=CHAR},
+      </if>
+      <if test="wToken != null">
+        w_token = #{wToken,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modiyTime != null">
+        modiy_time = #{modiyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tplcontentid != null">
+        tplcontentid = #{tplcontentid,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTicket != null">
+        share_ticket = #{shareTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="shareDated != null">
+        share_dated = #{shareDated,jdbcType=CHAR},
+      </if>
+      <if test="authorizerAccessToken != null">
+        authorizer_access_token = #{authorizerAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerRefreshToken != null">
+        authorizer_refresh_token = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerExpires != null">
+        authorizer_expires = #{authorizerExpires,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="webAccessToken != null">
+        web_access_token = #{webAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webRefreshToken != null">
+        web_refresh_token = #{webRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webExpires != null">
+        web_expires = #{webExpires,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qr != null">
+        qr = #{qr,jdbcType=VARCHAR},
+      </if>
+      <if test="waitAccess != null">
+        wait_access = #{waitAccess,jdbcType=BIT},
+      </if>
+      <if test="submerno != null">
+        submerno = #{submerno,jdbcType=VARCHAR},
+      </if>
+      <if test="apikey != null">
+        apikey = #{apikey,jdbcType=VARCHAR},
+      </if>
+      <if test="menuConfig != null">
+        menu_config = #{menuConfig,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update qzy_wx_user
+    set uid = #{uid,jdbcType=INTEGER},
+      wx_name = #{wxName,jdbcType=VARCHAR},
+      aes_key = #{aesKey,jdbcType=VARCHAR},
+      encode = #{encode,jdbcType=BIT},
+      app_id = #{appId,jdbcType=VARCHAR},
+      app_secret = #{appSecret,jdbcType=VARCHAR},
+      wxid = #{wxid,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=CHAR},
+      header_pic = #{headerPic,jdbcType=CHAR},
+      token = #{token,jdbcType=CHAR},
+      w_token = #{wToken,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modiy_time = #{modiyTime,jdbcType=TIMESTAMP},
+      tplcontentid = #{tplcontentid,jdbcType=VARCHAR},
+      share_ticket = #{shareTicket,jdbcType=VARCHAR},
+      share_dated = #{shareDated,jdbcType=CHAR},
+      authorizer_access_token = #{authorizerAccessToken,jdbcType=VARCHAR},
+      authorizer_refresh_token = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      authorizer_expires = #{authorizerExpires,jdbcType=CHAR},
+      type = #{type,jdbcType=BIT},
+      web_access_token = #{webAccessToken,jdbcType=VARCHAR},
+      web_refresh_token = #{webRefreshToken,jdbcType=VARCHAR},
+      web_expires = #{webExpires,jdbcType=TIMESTAMP},
+      qr = #{qr,jdbcType=VARCHAR},
+      wait_access = #{waitAccess,jdbcType=BIT},
+      submerno = #{submerno,jdbcType=VARCHAR},
+      apikey = #{apikey,jdbcType=VARCHAR},
+      menu_config = #{menuConfig,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.WeChatOfficialAccount">
+    update qzy_wx_user
+    set uid = #{uid,jdbcType=INTEGER},
+      wx_name = #{wxName,jdbcType=VARCHAR},
+      aes_key = #{aesKey,jdbcType=VARCHAR},
+      encode = #{encode,jdbcType=BIT},
+      app_id = #{appId,jdbcType=VARCHAR},
+      app_secret = #{appSecret,jdbcType=VARCHAR},
+      wxid = #{wxid,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=CHAR},
+      header_pic = #{headerPic,jdbcType=CHAR},
+      token = #{token,jdbcType=CHAR},
+      w_token = #{wToken,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modiy_time = #{modiyTime,jdbcType=TIMESTAMP},
+      tplcontentid = #{tplcontentid,jdbcType=VARCHAR},
+      share_ticket = #{shareTicket,jdbcType=VARCHAR},
+      share_dated = #{shareDated,jdbcType=CHAR},
+      authorizer_access_token = #{authorizerAccessToken,jdbcType=VARCHAR},
+      authorizer_refresh_token = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      authorizer_expires = #{authorizerExpires,jdbcType=CHAR},
+      type = #{type,jdbcType=BIT},
+      web_access_token = #{webAccessToken,jdbcType=VARCHAR},
+      web_refresh_token = #{webRefreshToken,jdbcType=VARCHAR},
+      web_expires = #{webExpires,jdbcType=TIMESTAMP},
+      qr = #{qr,jdbcType=VARCHAR},
+      wait_access = #{waitAccess,jdbcType=BIT},
+      submerno = #{submerno,jdbcType=VARCHAR},
+      apikey = #{apikey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/semantic-ui/semantic.css" type="text/css">
+    <script type="text/javascript" src="/semantic-ui/semantic.js"></script>
+    <title>登录</title>
+</head>
+<body>
+<div style="padding: 50px;">
+    <div th:if="${param.error}">
+        用户名或密码错
+    </div>
+    <div th:if="${param.logout}">
+        您已注销成功
+    </div>
+</div>
+<div style="padding: 50px;text-align: center;">
+    <form class="ui form" method="post" th:action="@{/login}">
+        <div class="field inline">
+            <label>用户名</label>
+            <input type="text" name="username" placeholder="">
+        </div>
+        <div class="field inline">
+            <label>密码</label>
+            <input type="password" name="password" placeholder="">
+        </div>
+        <button class="ui button" type="submit">登录</button>
+    </form>
+</div>
+</body>
+</html>
